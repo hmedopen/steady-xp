@@ -4,8 +4,10 @@ plugins {
 
 tasks.named('build') {
     dependsOn ':fabric:build'
+    dependsOn ':forge:build'
 }
 
 tasks.named('clean') {
     dependsOn ':fabric:clean'
+    dependsOn ':forge:clean'
 }

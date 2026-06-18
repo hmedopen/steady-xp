@@ -1,0 +1,73 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[7.0.17,8)'
+}
+
+version = project.mod_version
+group = project.maven_group
+base.archivesName = "${project.archives_base_name}-forge"
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+minecraft {
+    runs {
+        configureEach {
+            workingDir = layout.projectDirectory.dir('run')
+            args '--mixin.config=steady_xp.mixins.json'
+        }
+
+        register('client')
+
+        register('server') {
+            args '--nogui'
+        }
+    }
+}
+
+repositories {
+    minecraft.mavenizer(it)
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    mavenCentral()
+}
+
+dependencies {
+    implementation minecraft.dependency("net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}")
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 25
+}
+
+processResources {
+    def properties = [
+        mod_version: project.mod_version,
+        minecraft_version: project.minecraft_version,
+        forge_version: project.forge_version
+    ]
+    inputs.properties properties
+    filesMatching('META-INF/mods.toml') {
+        expand properties
+    }
+}
+
+tasks.named('jar', Jar) {
+    manifest {
+        attributes['MixinConfigs'] = 'steady_xp.mixins.json'
+    }
+    from(rootProject.file('LICENSE')) {
+        rename { "LICENSE_${rootProject.name}" }
+    }
+}
+
+publishing {
+    publications {
+        create('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+}

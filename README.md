@@ -17,7 +17,7 @@ Steady XP replaces Minecraft's increasing XP curve with one predictable cost:
 |---|---|---|
 | Fabric | Supported | [`fabric/`](fabric/) |
 | NeoForge | Planned | Not added yet |
-| Forge | Planned | Not added yet |
+| Forge | Supported | [`forge/`](forge/) |
 
 Future loaders will live in their own top-level modules while sharing this repository,
 issue tracker, versioning, documentation, and release history.
@@ -34,14 +34,17 @@ The minimum accepted value is `1`. Existing config values are preserved when upd
 
 ## Building
 
-Steady XP currently targets Minecraft 26.1.2, Fabric Loader 0.19.3, and Java 25.
+Steady XP currently targets Minecraft 26.1.2 and Java 25, with builds for
+Fabric Loader 0.19.3 and Forge 64.0.9.
 
 ```powershell
 .\gradlew.bat build
 ```
 
-The Fabric JAR is written to `fabric/build/libs/` and is named with the loader,
-for example `steady-xp-fabric-1.0.0.jar`.
+Loader-specific JARs are written to their module's `build/libs/` folder:
+
+- `fabric/build/libs/steady-xp-fabric-1.0.0.jar`
+- `forge/build/libs/steady-xp-forge-1.0.0.jar`
 
 ## Links
 
