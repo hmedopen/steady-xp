@@ -43,8 +43,8 @@ Fabric Loader 0.19.3 and Forge 64.0.9.
 
 Loader-specific JARs are written to their module's `build/libs/` folder:
 
-- `fabric/build/libs/steady-xp-fabric-1.0.1.jar`
-- `forge/build/libs/steady-xp-forge-1.0.1.jar`
+- `fabric/build/libs/steady-xp-fabric-1.1.jar`
+- `forge/build/libs/steady-xp-forge-1.1.jar`
 
 ## Links
 
