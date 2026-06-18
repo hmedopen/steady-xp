@@ -1,0 +1,25 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  fabric:
+    name: Fabric
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 25
+          cache: gradle
+      - name: Build
+        run: |
+          chmod +x gradlew
+          ./gradlew :fabric:build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: steady-xp-fabric
+          path: fabric/build/libs/*-fabric-*.jar

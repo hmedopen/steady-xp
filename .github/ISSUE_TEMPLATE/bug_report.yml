@@ -1,0 +1,42 @@
+name: Bug report
+description: Report a reproducible problem with Steady XP
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: loader
+    attributes:
+      label: Mod loader
+      options: [Fabric, NeoForge, Forge]
+    validations:
+      required: true
+  - type: input
+    id: minecraft
+    attributes:
+      label: Minecraft version
+    validations:
+      required: true
+  - type: input
+    id: mod-version
+    attributes:
+      label: Steady XP version
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. ...\n2. ...\n3. ..."
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Drag and drop the relevant log file here.

@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "steady_xp",
+	"version": "${version}",
+	"name": "Steady XP",
+	"description": "Makes every Minecraft level require the same configurable amount of XP.",
+	"authors": [
+		"hmed"
+	],
+	"contact": {
+		"homepage": "https://github.com/hmedopen/steady-xp",
+		"sources": "https://github.com/hmedopen/steady-xp",
+		"issues": "https://github.com/hmedopen/steady-xp/issues"
+	},
+	"license": "MIT",
+	"icon": "assets/steady_xp/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.hmed.steadyxp.SteadyXpMod"
+		]
+	},
+	"mixins": [
+		"steady_xp.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.1.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
